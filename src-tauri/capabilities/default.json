@@ -1,0 +1,23 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "default",
+  "description": "Default capabilities for SquirrelDisk",
+  "windows": ["main"],
+  "permissions": [
+    "core:default",
+    "opener:default",
+    "shell:allow-spawn",
+    "fs:default",
+    "fs:allow-remove",
+    "dialog:default",
+    "dialog:allow-open",
+    "os:default",
+    "core:window:allow-start-dragging",
+    "core:window:allow-close",
+    "core:window:allow-minimize",
+    "core:window:allow-maximize",
+    "core:window:allow-unmaximize",
+    "core:window:allow-is-maximized",
+    "dialog:allow-save"
+  ]
+}

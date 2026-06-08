@@ -1,0 +1,40 @@
+[package]
+name = "orbita"
+version = "0.2.0"
+description = "Orbita — a modern, fast and beautiful disk space analyzer with interactive visualizations"
+authors = ["Arelove"]
+edition = "2021"
+
+[lib]
+name = "orbita_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = ["devtools"] }
+tauri-plugin-os = "2"
+tauri-plugin-opener = "2"
+tauri-plugin-shell = "2"
+tauri-plugin-fs = "2"
+tauri-plugin-dialog = "2"
+
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+sysinfo = "0.32"
+regex = "1"
+trash = "3"
+
+[target."cfg(target_os = \"windows\")".dependencies]
+windows-sys = { version = "0.52", features = [
+  "Win32_Foundation",
+  "Win32_Graphics_Dwm",
+] }
+
+[profile.release]
+panic = "abort"
+codegen-units = 1
+lto = true
+opt-level = "s"        # хорошо для размера
+strip = true
