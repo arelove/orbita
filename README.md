@@ -1,7 +1,7 @@
 
 <div align="center">
 
-<img src="docs/images/icon.svg" width="256" alt="Orbita icon">
+<img src="docs/images/icon.svg" width="512" alt="Orbita icon">
 
 # Orbita
 
