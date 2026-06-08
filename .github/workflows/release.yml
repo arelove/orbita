@@ -7,7 +7,7 @@ on:
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
-  PDU_VERSION: "0.21.1"
+  PDU_VERSION: "0.24.0"
 
 jobs:
   build:
@@ -19,18 +19,26 @@ jobs:
           - platform: linux-x86_64
             runner: ubuntu-latest
             pdu_target: x86_64-unknown-linux-gnu
+            pdu_ext: ''
+            pdu_prebuilt: true
             args: ''
           - platform: macos-x86_64
             runner: macos-13
             pdu_target: x86_64-apple-darwin
+            pdu_ext: ''
+            pdu_prebuilt: true
             args: '--target x86_64-apple-darwin'
           - platform: macos-aarch64
             runner: macos-latest
             pdu_target: aarch64-apple-darwin
+            pdu_ext: ''
+            pdu_prebuilt: false
             args: '--target aarch64-apple-darwin'
           - platform: windows-x86_64
             runner: windows-latest
             pdu_target: x86_64-pc-windows-msvc
+            pdu_ext: '.exe'
+            pdu_prebuilt: true
             args: ''
 
     steps:
@@ -59,20 +67,27 @@ jobs:
           sudo apt-get install -y libwebkit2gtk-4.1-dev libappindicator3-dev \
             librsvg2-dev patchelf libxdo-dev
 
-      - name: Download pdu binary
+      - name: Download pdu binary (prebuilt)
+        if: matrix.pdu_prebuilt == true
         shell: bash
         run: |
           mkdir -p src-tauri/bin
-          TARGET="${{ matrix.pdu_target }}"
-          if [[ "$TARGET" == *"windows"* ]]; then
-            EXT=".exe"
-          else
-            EXT=""
-          fi
           curl -sSfL \
-            "https://github.com/KSXGitHub/parallel-disk-usage/releases/download/${{ env.PDU_VERSION }}/pdu-${TARGET}${EXT}" \
-            -o "src-tauri/bin/pdu-${TARGET}${EXT}"
-          chmod +x "src-tauri/bin/pdu-${TARGET}${EXT}" || true
+            "https://github.com/KSXGitHub/parallel-disk-usage/releases/download/${{ env.PDU_VERSION }}/pdu-${{ matrix.pdu_target }}${{ matrix.pdu_ext }}" \
+            -o "src-tauri/bin/pdu-${{ matrix.pdu_target }}${{ matrix.pdu_ext }}"
+          chmod +x "src-tauri/bin/pdu-${{ matrix.pdu_target }}" || true
+
+      - name: Build pdu binary (macOS aarch64 — no prebuilt available)
+        if: matrix.pdu_prebuilt == false
+        shell: bash
+        run: |
+          mkdir -p src-tauri/bin
+          cargo install parallel-disk-usage \
+            --version ${{ env.PDU_VERSION }} \
+            --target aarch64-apple-darwin \
+            --root ./pdu-out
+          cp pdu-out/bin/pdu src-tauri/bin/pdu-aarch64-apple-darwin
+          chmod +x src-tauri/bin/pdu-aarch64-apple-darwin
 
       - name: Install npm deps
         run: npm ci
