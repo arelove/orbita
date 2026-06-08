@@ -17,4 +17,5 @@ vite.config.ts.timestamp-*
 vite.config.js.timestamp-*
 /target/
 /gen/schemas
+repomix-output.xml
 
