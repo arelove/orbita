@@ -77,6 +77,7 @@ fn show_in_folder(path: String) {
 
     #[cfg(target_os = "linux")]
     {
+        use std::path::Path;
         let p = Path::new(&path);
         let target = if p.is_dir() {
             path.clone()
