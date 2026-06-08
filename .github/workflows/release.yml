@@ -9,6 +9,9 @@ env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
   PDU_VERSION: "0.24.0"
 
+permissions:
+  contents: write
+
 jobs:
   build:
     name: Build (${{ matrix.platform }})

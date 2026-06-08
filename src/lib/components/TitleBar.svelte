@@ -5,6 +5,7 @@
   import { platform } from '@tauri-apps/plugin-os';
   import { onMount, onDestroy } from 'svelte';
   import { scanParams } from '$lib/stores';
+  const appIcon = '/fileicons/icon.svg';
 
   let plf = $state('');
   let isMaximized = $state(false);
@@ -61,12 +62,7 @@
     <!-- Windows/Linux — логотип + название -->
     <div class="app-brand flex items-center gap-2 pointer-events-none z-10">
       <div class="brand-icon">
-        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none">
-          <circle cx="12" cy="12" r="9" fill="#0e1018" stroke="#3b82f6" stroke-width="0.8"/>
-          <circle cx="12" cy="12" r="6.5" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-dasharray="3.5 2.8" stroke-dashoffset="1"/>
-          <circle cx="12" cy="12" r="3.5" fill="none" stroke="#8b5cf6" stroke-width="2" stroke-dasharray="2.5 2"/>
-          <circle cx="12" cy="12" r="1.5" fill="#3b82f6"/>
-        </svg>
+        <img src={appIcon} class="w-7 h-7" alt="Orbita" />
       </div>
       <span class="brand-name text-sm font-semibold">Orbita</span>
     </div>
