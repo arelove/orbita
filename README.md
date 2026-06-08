@@ -15,15 +15,6 @@ Orbita visualizes your disk usage as an interactive sunburst chart, lets you dri
 [![Rust](https://img.shields.io/badge/Rust-2021-CE422B?logo=rust)](https://www.rust-lang.org)
 [![Windows](https://img.shields.io/badge/Windows-10%20%7C%2011-0078D4?logo=windows)](https://github.com/arelove/infinity-loop/releases)
 
-<p>
-  <a href="#-what-is-this">About</a> &nbsp;·&nbsp;
-  <a href="#-screenshots">Screenshots</a> &nbsp;·&nbsp;
-  <a href="#-quick-start">Quick Start</a> &nbsp;·&nbsp;
-  <a href="#%EF%B8%8F-settings">Settings</a> &nbsp;·&nbsp;
-  <a href="#%EF%B8%8F-keyboard-shortcuts">Shortcuts</a> &nbsp;·&nbsp;
-  <a href="#-tech-stack">Tech Stack</a>
-</p>
-
 [![Share on X](https://img.shields.io/badge/share-000000?logo=x&logoColor=white)](https://x.com/intent/tweet?text=Check%20out%20Infinity%20Loop%20%E2%80%94%20an%20AI%20knowledge%20graph%20explorer%20built%20with%20Tauri%20%2B%20Svelte%20%2B%20Rust%20%F0%9F%94%8D%E2%9C%A8%20https://github.com/arelove/infinity-loop)
 [![Share on Reddit](https://img.shields.io/badge/share-FF4500?logo=reddit&logoColor=white)](https://www.reddit.com/submit?title=Infinity%20Loop%20%E2%80%94%20AI%20knowledge%20graph%20explorer%20built%20with%20Tauri%20%2B%20Rust&url=https://github.com/arelove/infinity-loop)
 [![Share on Telegram](https://img.shields.io/badge/share-0088CC?logo=telegram&logoColor=white)](https://t.me/share/url?url=https://github.com/arelove/infinity-loop&text=Infinity%20Loop%20%E2%80%94%20AI%20knowledge%20graph%20explorer)
