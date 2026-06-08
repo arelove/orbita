@@ -1,6 +1,6 @@
 [package]
 name = "orbita"
-version = "0.2.0"
+version = "0.3.0"
 description = "Orbita — a modern, fast and beautiful disk space analyzer with interactive visualizations"
 authors = ["Arelove"]
 edition = "2021"

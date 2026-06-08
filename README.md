@@ -29,6 +29,7 @@ Orbita visualizes your disk usage as an interactive sunburst chart, lets you dri
 [![Share on Telegram](https://img.shields.io/badge/share-0088CC?logo=telegram&logoColor=white)](https://t.me/share/url?url=https://github.com/arelove/infinity-loop&text=Infinity%20Loop%20%E2%80%94%20AI%20knowledge%20graph%20explorer)
 
 </div>
+
 ---
 
 ## Features
@@ -48,7 +49,7 @@ Orbita visualizes your disk usage as an interactive sunburst chart, lets you dri
 ## Stack
 
 | Layer | Technology |
-|---|---|
+| --- | --- |
 | Frontend | SvelteKit 2, Svelte 5 (runes) |
 | Styles | Tailwind CSS 3 |
 | Chart | D3 v7 (sunburst) |
@@ -92,7 +93,7 @@ The scan engine is `pdu` ([parallel-disk-usage](https://github.com/KSXGitHub/par
 Prebuilt binaries are included for:
 
 | Platform | File |
-|---|---|
+| --- | --- |
 | Linux x86_64 | `pdu-x86_64-unknown-linux-gnu` |
 | macOS x86_64 | `pdu-x86_64-apple-darwin` |
 | Windows x86_64 MSVC | `pdu-x86_64-pc-windows-msvc.exe` |
@@ -107,7 +108,7 @@ cargo install parallel-disk-usage --target <your-target> --root ./out
 
 ## Project structure
 
-```
+```text
 src/
   routes/
     +layout.svelte        # App shell: splash screen, TitleBar, OS detection
@@ -189,4 +190,4 @@ Release profile is configured for small binary size (`opt-level = "s"`, `lto = t
 
 ## License
 
-MIT
+Apache-2.0 license
