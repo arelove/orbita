@@ -7,6 +7,7 @@ on:
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+  PDU_VERSION: "0.21.1"
 
 jobs:
   build:
@@ -17,15 +18,19 @@ jobs:
         include:
           - platform: linux-x86_64
             runner: ubuntu-latest
+            pdu_target: x86_64-unknown-linux-gnu
             args: ''
           - platform: macos-x86_64
             runner: macos-13
+            pdu_target: x86_64-apple-darwin
             args: '--target x86_64-apple-darwin'
           - platform: macos-aarch64
             runner: macos-latest
+            pdu_target: aarch64-apple-darwin
             args: '--target aarch64-apple-darwin'
           - platform: windows-x86_64
             runner: windows-latest
+            pdu_target: x86_64-pc-windows-msvc
             args: ''
 
     steps:
@@ -53,6 +58,21 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y libwebkit2gtk-4.1-dev libappindicator3-dev \
             librsvg2-dev patchelf libxdo-dev
+
+      - name: Download pdu binary
+        shell: bash
+        run: |
+          mkdir -p src-tauri/bin
+          TARGET="${{ matrix.pdu_target }}"
+          if [[ "$TARGET" == *"windows"* ]]; then
+            EXT=".exe"
+          else
+            EXT=""
+          fi
+          curl -sSfL \
+            "https://github.com/KSXGitHub/parallel-disk-usage/releases/download/${{ env.PDU_VERSION }}/pdu-${TARGET}${EXT}" \
+            -o "src-tauri/bin/pdu-${TARGET}${EXT}"
+          chmod +x "src-tauri/bin/pdu-${TARGET}${EXT}" || true
 
       - name: Install npm deps
         run: npm ci
